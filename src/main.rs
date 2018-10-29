@@ -28,7 +28,8 @@ fn main() {
 }
 
 fn get_first_recurring_char(slice: &str) -> Option<char> {
-    let mut seen_chars: HashSet<char> = HashSet::new();
+    // do a good guess to avoid allocating over and over again.
+    let mut seen_chars: HashSet<char> = HashSet::with_capacity(slice.len() / 2);
 
     for character in slice.chars() {
         if seen_chars.contains(&character) {
