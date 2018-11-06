@@ -53,6 +53,6 @@ mod tests {
 
     #[test]
     fn simple_recurring() {
-        assert_eq!(get_first_recurring_char("DBCABA"), Some('B'))
+        assert_eq!(get_first_recurring_char("DBCABA"), Some('B'));
     }
 }
