@@ -55,4 +55,9 @@ mod tests {
     fn simple_recurring() {
         assert_eq!(get_first_recurring_char("DBCABA"), Some('B'));
     }
+
+    #[test]
+    fn case_sensitive() {
+        assert_eq!(get_first_recurring_char("AaBbCC"), Some('C'));
+    }
 }
