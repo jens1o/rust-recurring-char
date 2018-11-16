@@ -1,3 +1,7 @@
+#![feature(test)]
+#![feature(extern_crate_item_prelude)]
+extern crate test;
+
 use std::collections::HashSet;
 use std::env;
 use std::process;
@@ -45,19 +49,26 @@ fn get_first_recurring_char(slice: &str) -> Option<char> {
 #[cfg(test)]
 mod tests {
     use super::get_first_recurring_char;
+    use test::Bencher;
 
-    #[test]
-    fn test_none() {
-        assert_eq!(get_first_recurring_char("ABCDEF"), None);
+    #[bench]
+    fn test_none(b: &mut Bencher) {
+        b.iter(|| {
+            assert_eq!(get_first_recurring_char("ABCDEF"), None);
+        });
     }
 
-    #[test]
-    fn simple_recurring() {
-        assert_eq!(get_first_recurring_char("DBCABA"), Some('B'));
+    #[bench]
+    fn simple_recurring(b: &mut Bencher) {
+        b.iter(|| {
+            assert_eq!(get_first_recurring_char("bb"), Some('b'));
+        });
     }
 
-    #[test]
-    fn case_sensitive() {
-        assert_eq!(get_first_recurring_char("AaBbCC"), Some('C'));
+    #[bench]
+    fn case_sensitive(b: &mut Bencher) {
+        b.iter(|| {
+            assert_eq!(get_first_recurring_char("AaBbCC"), Some('C'));
+        });
     }
 }
