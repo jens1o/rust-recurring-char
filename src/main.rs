@@ -1,5 +1,4 @@
 #![feature(test)]
-#![feature(extern_crate_item_prelude)]
 extern crate test;
 
 use std::collections::HashSet;
